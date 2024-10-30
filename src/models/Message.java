@@ -7,18 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(
-			name  = "getAllMessages",
-			query = "SELECT m FROM Message AS m ORDER BY m.id DESC"
-
-			)
-
+    @NamedQuery(
+        name = "getAllMessages",
+        query = "SELECT m FROM Message AS m ORDER BY m.id DESC"
+    )
 })
 @Table(name = "messages")
 public class Message {
@@ -41,11 +39,15 @@ public class Message {
 		this.content = content;
 	}
 
-	@Column(name = "create_at", nullable =false)
-	private Timestamp create_at;
+	@Column(name = "created_at", nullable =false)
+	private Timestamp created_at;
 
 	@Column(name = "updated_at", nullable =false)
 	private Timestamp updated_at;
+
+	public Timestamp getCreated_at() {
+		return created_at;
+	}
 
 	public Integer getId() {
 		return id;
@@ -63,20 +65,17 @@ public class Message {
 		this.title = title;
 	}
 
-	public Timestamp getCreate_at() {
-		return create_at;
-	}
-
-	public void setCreate_at(Timestamp create_at) {
-		this.create_at = create_at;
-	}
-
 	public Timestamp getUpdated_at() {
 		return updated_at;
 	}
 
 	public void setUpdated_at(Timestamp updated_at) {
 		this.updated_at = updated_at;
+	}
+
+	public void setCreated_at(Timestamp created_at) {
+		// TODO 自動生成されたメソッド・スタブ
+		this.created_at = created_at;
 	}
 
 
