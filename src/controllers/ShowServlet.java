@@ -32,17 +32,17 @@ public class ShowServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        EntityManager em = DBUtil.createEntityManager();
+		EntityManager em = DBUtil.createEntityManager();
 
-        // 該当のIDのメッセージ1件のみをデータベースから取得
-        Message m = em.find(Message.class, Integer.parseInt(request.getParameter("id")));
+		Message m = em.find(Message.class, Integer.parseInt(request.getParameter("id")));
 
-        em.close();
+		em.close();
 
-        // メッセージデータをリクエストスコープにセットしてshow.jspを呼び出す
-        request.setAttribute("message", m);
+		request.setAttribute("message", m);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/show.jsp");
-        rd.forward(request, response);
-    }
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/show.jsp");
+		rd.forward(request, response);
+
+	}
+
 }
